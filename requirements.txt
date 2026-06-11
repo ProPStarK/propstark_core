@@ -1,0 +1,8 @@
+astropy
+scipy
+numpy
+pyyaml
+matplotlib
+radio-beam
+mosaic_proposal_helper>=0.5
+scikit-image
