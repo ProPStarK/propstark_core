@@ -71,17 +71,17 @@ HC:
   width: "3.0 arcmin"
   PA: "39.8 deg"
 IC348-A:
-  RA0: "3:44:19.97"
-  Dec0: "31:58:55.58"
-  height: "3.5 arcmin"
+  RA0: "3:44:18.41"
+  Dec0: "31:59:01.40"
+  height: "4.4 arcmin"
   width: "3.0 arcmin"
-  PA: "39.8 deg"
+  PA: "40.0 deg"
 IC348-B:
   RA0: "3:43:52.25"
   Dec0: "32:01:59.36"
   height: "7.5 arcmin"
   width: "5.0 arcmin"
-  PA: "39.8 deg"
+  PA: "90.0 deg"
 L1448-A:
   RA0: "3:25:44.08"
   Dec0: "30:43:46.55"
