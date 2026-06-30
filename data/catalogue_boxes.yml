@@ -231,19 +231,25 @@ OrionB_NGC2023_2024-A:
   Dec0: "-2:18:34.95"
   height: "2.0 arcmin"
   width: "7.0 arcmin"
-  PA: "339.8 deg"
+  PA: "249.8 deg"
 OrionB_NGC2023_2024-B:
   RA0: "5:41:37.95"
   Dec0: "-2:17:24.5"
   height: "3.5 arcmin"
   width: "2.0 arcmin"
   PA: "340.6 deg"
-OrionB_NGC2023_2024-C:
+OrionB_NGC2023_2024-North:
   RA0: "5:41:43.92"
   Dec0: "-1:55:14.05"
   height: "1.5 arcmin"
   width: "5.0 arcmin"
-  PA: "344.93 deg"
+  PA: "254.93 deg"
+OrionB_NGC2023_2024-South:
+  RA0: "5:41:34.40"
+  Dec0: "-2:17:57.06"
+  height: "6.0 arcmin"
+  width: "7.5 arcmin"
+  PA: "250.0 deg"
 Serpens_MWC297:
   RA0: "18:28:08.6"
   Dec0: "-3:47:25.61"
