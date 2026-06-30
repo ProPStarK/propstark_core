@@ -4,6 +4,12 @@ Barnard1:
   height: "5 arcmin"
   width: "10 arcmin"
   PA: "316.17 deg"
+Per-emb-2:
+  RA0: "3:32:18.2"
+  Dec0: "30:50:27.4"
+  height: "2.8 arcmin"
+  width: "4.0 arcmin"
+  PA: "130 deg"
 B18-A:
   RA0: "4:35:36.8"
   Dec0: "24:09:14.96"
@@ -40,12 +46,18 @@ Cep_L1228:
   height: "2.5 arcmin"
   width: "3.5 arcmin"
   PA: "0 deg"
-Cep_L1251:
+Cep_L1251-A:
   RA0: "22:30:28.22"
   Dec0: "75:13:37.7"
   height: "9 arcmin"
   width: "4 arcmin"
-  PA: "0 deg"
+  PA: "90 deg"
+Cep_L1251-B:
+  RA0: "22:38:34.3"
+  Dec0: "75:11:11.6"
+  height: "9.5 arcmin"
+  width: "5 arcmin"
+  PA: "90 deg"
 CrA_East:
   RA0: "19:10:18.3"
   Dec0: "-37:08:15.5"
@@ -64,12 +76,18 @@ CrA_West-B:
   height: "1.5 arcmin"
   width: "1.5 arcmin"
   PA: "0 deg"
-HC:
+CrA_West_all:
+  RA0: "19:01:48.5"
+  Dec0: "-36:56:44.0"
+  height: "4.5 arcmin"
+  width: "2.0 arcmin"
+  PA: "140 deg"
+HC2:
   RA0: "4:41:33.14"
   Dec0: "26:01:13.65"
   height: "7.5 arcmin"
   width: "3.0 arcmin"
-  PA: "39.8 deg"
+  PA: "129.8 deg"
 IC348-A:
   RA0: "3:44:18.41"
   Dec0: "31:59:01.40"
@@ -101,17 +119,17 @@ L1448_merged:
   width: "7.5 arcmin"
   PA: "90.0 deg"
 L1451-A:
-  RA0: "3:25:26.45"
-  Dec0: "30:21:47.7"
+  RA0: "3:25:07.20"
+  Dec0: "30:24:11.0"
   height: "3.6 arcmin"
   width: "2.7 arcmin"
-  PA: "0.0 deg"
+  PA: "90.0 deg"
 L1455:
-  RA0: "3:27:46.24"
-  Dec0: "30:12:00.6"
+  RA0: "3:27:46.62"
+  Dec0: "30:12:03.1"
   height: "4.8 arcmin"
   width: "2.5 arcmin"
-  PA: "27.5 deg"
+  PA: "115.0 deg"
 L1495-A:
   RA0: "4:18:33.3"
   Dec0: "28:28:01.3"
@@ -154,6 +172,12 @@ L1688-A:
   height: "1.5 arcmin"
   width: "1.5 arcmin"
   PA: "0.0 deg"
+L1688-OphB:
+  RA0: "16:27:23.53"
+  Dec0: "-24:28:27.90"
+  height: "7.5 arcmin"
+  width: "4.5 arcmin"
+  PA: "250.0 deg"
 L1688-B:
   RA0: "16:26:59.96"
   Dec0: "-24:34:30.5"
@@ -201,7 +225,7 @@ L1689-C:
   Dec0: "-24:28:53.15"
   height: "3.0 arcmin"
   width: "2.5 arcmin"
-  PA: "0.0 deg"
+  PA: "90.0 deg"
 OrionB_NGC2023_2024-A:
   RA0: "5:41:27.54"
   Dec0: "-2:18:34.95"
