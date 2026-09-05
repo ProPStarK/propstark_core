@@ -1,0 +1,31 @@
+# Region file format: DS9 version 4.1
+global color=cyan dashlist=8 3 width=1 font="helvetica 10 normal" select=1 highlite=1 dash=0 fixed=0 edit=1 move=1 delete=1 include=1 source=1
+fk5
+circle(3:43:35.969,32:03:18.965,53.113") # text={IC348-Main_0}
+circle(3:43:35.971,32:02:25.852,53.113") # text={IC348-Main_1}
+circle(3:43:39.586,32:03:45.547,53.113") # text={IC348-Main_2}
+circle(3:43:39.588,32:02:52.434,53.113") # text={IC348-Main_3}
+circle(3:43:43.205,32:03:19.009,53.113") # text={IC348-Main_4}
+circle(3:43:46.822,32:03:45.579,53.113") # text={IC348-Main_5}
+circle(3:43:46.823,32:02:52.466,53.113") # text={IC348-Main_6}
+circle(3:43:46.824,32:01:59.353,53.113") # text={IC348-Main_7}
+circle(3:43:50.441,32:04:12.142,53.113") # text={IC348-Main_8}
+circle(3:43:50.441,32:03:19.029,53.113") # text={IC348-Main_9}
+circle(3:43:50.442,32:00:39.690,53.113") # text={IC348-Main_10}
+circle(3:43:50.442,31:59:46.577,53.113") # text={IC348-Main_11}
+circle(3:43:54.059,32:03:45.585,53.113") # text={IC348-Main_12}
+circle(3:43:54.059,32:02:52.472,53.113") # text={IC348-Main_13}
+circle(3:43:54.058,32:01:06.246,53.113") # text={IC348-Main_14}
+circle(3:43:54.058,32:00:13.133,53.113") # text={IC348-Main_15}
+circle(3:43:57.678,32:04:12.135,53.113") # text={IC348-Main_16}
+circle(3:43:57.677,32:03:19.022,53.113") # text={IC348-Main_17}
+circle(3:43:57.676,32:02:25.909,53.113") # text={IC348-Main_18}
+circle(3:43:57.675,32:01:32.796,53.113") # text={IC348-Main_19}
+circle(3:43:57.675,32:00:39.683,53.113") # text={IC348-Main_20}
+circle(3:43:57.674,31:59:46.570,53.113") # text={IC348-Main_21}
+circle(3:44:01.295,32:02:52.453,53.113") # text={IC348-Main_22}
+circle(3:44:01.293,32:01:59.340,53.113") # text={IC348-Main_23}
+circle(3:44:04.911,32:02:25.877,53.113") # text={IC348-Main_24}
+circle(3:44:04.909,32:01:32.764,53.113") # text={IC348-Main_25}
+circle(3:44:04.907,32:00:39.651,53.113") # text={IC348-Main_26}
+circle(3:44:08.528,32:01:59.295,53.113") # text={IC348-Main_27}
