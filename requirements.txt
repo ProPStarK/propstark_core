@@ -6,3 +6,5 @@ matplotlib
 radio-beam
 mosaic_proposal_helper>=0.5
 scikit-image
+pyvo
+python-dotenv
