@@ -1,4 +1,5 @@
 import pytest
+
 from propstark_core.survey import REGION_DISTANCES, get_region_distance
 
 
