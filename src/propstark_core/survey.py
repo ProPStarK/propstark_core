@@ -89,8 +89,6 @@ def get_region_distance(region_name: str) -> float:
 
 def get_planned_observations(region_name: str) -> int:
     """Return the number of planned observations for ``region_name``."""
-    # for obs in planned_obs:
-    #     if obs == region_name:
     if region_name in planned_obs:
         return planned_obs[region_name]["obs"]
     else:

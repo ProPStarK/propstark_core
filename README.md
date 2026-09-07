@@ -19,13 +19,13 @@ import yaml
 from propstark_core import plot_pointings
 
 with open("data/catalogue_boxes.yml", encoding="utf-8") as catalogue_file:
-	catalogue = yaml.safe_load(catalogue_file)
+    catalogue = yaml.safe_load(catalogue_file)
 
 axes, pointings = plot_pointings(
-	"data/B1_NH3_11_all_rebase3_mom0_QA_trim.fits",
-	catalogue,
-	"Barnard1",
-	distance=301 * u.pc,
+    "data/B1_NH3_11_all_rebase3_mom0_QA_trim.fits",
+    catalogue,
+    "Barnard1",
+    distance=301 * u.pc,
 )
 ```
 
