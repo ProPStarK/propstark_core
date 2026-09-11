@@ -42,6 +42,7 @@ test = ["pytest"]
 [tool.setuptools_scm]
 version_file = "src/propstark_core/_version.py"
 fallback_version = "0.1"
+local_scheme = "no-local-version"
 
 [tool.setuptools.packages.find]
 where = ["src"]
