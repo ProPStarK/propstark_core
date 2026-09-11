@@ -32,4 +32,7 @@ __all__ = [
     "select_semester_columns",
     "survey_progress_dataframe",
 ]
-__version__ = importlib.metadata.version("propstark-core")  # type: ignore
+try:
+    from ._version import __version__
+except ImportError:
+    __version__ = importlib.metadata.version("propstark-core")
