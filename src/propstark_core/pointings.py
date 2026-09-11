@@ -37,7 +37,7 @@ def pst_to_ds9_fk5_regions(
         "# Region file format: DS9 version 4.1",
         (
             f"global color={color} dashlist=8 3 width=1 "
-            "font=\"helvetica 10 normal\" select=1 highlite=1 dash=0 fixed=0 "
+            'font="helvetica 10 normal" select=1 highlite=1 dash=0 fixed=0 '
             "edit=1 move=1 delete=1 include=1 source=1"
         ),
         "fk5",
@@ -55,13 +55,17 @@ def pst_to_ds9_fk5_regions(
 
             name, right_ascension, declination = columns[0], columns[4], columns[5]
             if (
-                right_ascension.lower().startswith("ra")
-                and declination.lower().startswith("dec")
-            ) or not right_ascension or not declination:
+                (
+                    right_ascension.lower().startswith("ra")
+                    and declination.lower().startswith("dec")
+                )
+                or not right_ascension
+                or not declination
+            ):
                 continue
 
             region_lines.append(
-                f'circle({right_ascension},{declination},{radius_arcsec}\") # text={{{name}}}'
+                f'circle({right_ascension},{declination},{radius_arcsec}") # text={{{name}}}'
             )
 
     if len(region_lines) == 3:
@@ -75,7 +79,10 @@ def pst_to_ds9_fk5_regions(
 
 
 def _pointings_on_image(
-    pointings: list[SkyCoord], header: fits.Header, image: np.ndarray, threshold: float
+    pointings: list[SkyCoord],
+    header: fits.Header,
+    image: np.ndarray,
+    threshold: float,
 ) -> list[SkyCoord]:
     wcs = WCS(header)
     selected = []
@@ -83,7 +90,11 @@ def _pointings_on_image(
     for pointing in pointings:
         x_coordinate, y_coordinate = wcs.world_to_pixel(pointing)
         x_index, y_index = int(x_coordinate), int(y_coordinate)
-        if 0 <= x_index < width and 0 <= y_index < height and image[y_index, x_index] > threshold:
+        if (
+            0 <= x_index < width
+            and 0 <= y_index < height
+            and image[y_index, x_index] > threshold
+        ):
             selected.append(pointing)
     return selected
 
@@ -177,7 +188,9 @@ def plot_pointings(
             pb=primary_beam,
             pa=u.Quantity(source["PA"]),
         )
-        for pointing in _pointings_on_image(pointings, image_hdu.header, image_hdu.data, threshold):
+        for pointing in _pointings_on_image(
+            pointings, image_hdu.header, image_hdu.data, threshold
+        ):
             retained_pointings.append(pointing)
             plotting.plot_circle_wcs(
                 axes,
