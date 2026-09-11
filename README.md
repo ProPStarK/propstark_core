@@ -1,10 +1,22 @@
 # propstark_core
+![PyPI - License](https://img.shields.io/pypi/l/propstark_core?color=green)
+![PyPI - Version](https://img.shields.io/pypi/v/propstark_core)
+![Python Version from PEP 621 TOML](https://img.shields.io/python/required-version-toml?tomlFilePath=https%3A%2F%2Fraw.githubusercontent.com%2F2Fpropstark%2Fpropstark_core%2Fmaster%2Fpyproject.toml)
+
 Collection of analysis and display helpers for the ProPStarK program.
 
-Install the package from a clone with:
+## Installation
 
+Installation using pip:
+```python
+pip install propstark_core
+```
+
+From the repository root:
+
+Install the package from a clone with:
 ```bash
-pip install .
+python -m pip install .
 ```
 
 ## Pointing plots
