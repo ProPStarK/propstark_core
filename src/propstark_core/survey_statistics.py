@@ -4,8 +4,11 @@ from pathlib import Path
 
 import matplotlib
 
-matplotlib.use("Agg")
-
+try:
+    _ = matplotlib.get_backend()
+except Exception:
+    matplotlib.use("Agg", force=True)
+    
 import matplotlib.pyplot as plt
 import pandas as pd
 from matplotlib.axes import Axes
