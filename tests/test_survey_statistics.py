@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 import pytest
 
-from pointings.survey_statistics import plot_observed_fraction
+from propstark_core.survey_statistics import plot_observed_fraction
 from propstark_core.survey import planned_observations_dataframe
 
 

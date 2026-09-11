@@ -1,5 +1,7 @@
 """Analysis and display helpers for the ProPStarK program."""
 
+import importlib.metadata
+
 from .archive import list_observations, load_observations_csv, query_proposal_id
 from .pointings import plot_pointings, pst_to_ds9_fk5_regions
 from .survey import (
@@ -30,3 +32,4 @@ __all__ = [
     "select_semester_columns",
     "survey_progress_dataframe",
 ]
+__version__ = importlib.metadata.version("propstark-core")  # type: ignore
