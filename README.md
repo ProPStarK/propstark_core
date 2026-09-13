@@ -1,7 +1,7 @@
 # propstark_core
 ![PyPI - License](https://img.shields.io/pypi/l/propstark_core?color=green)
 ![PyPI - Version](https://img.shields.io/pypi/v/propstark_core)
-![Python Version from PEP 621 TOML](https://img.shields.io/python/required-version-toml?tomlFilePath=https%3A%2F%2Fraw.githubusercontent.com%2F2Fpropstark%2Fpropstark_core%2Fmaster%2Fpyproject.toml)
+![Python Version from PEP 621 TOML](https://img.shields.io/python/required-version-toml?tomlFilePath=https%3A%2F%2Fraw.githubusercontent.com%2FProPStarK%2Fpropstark_core%2Fmain%2Fpyproject.toml)
 
 Collection of analysis and display helpers for the ProPStarK program.
 
