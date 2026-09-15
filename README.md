@@ -46,6 +46,14 @@ The complete worked example remains in [pointings/image_overlay.ipynb](pointings
 
 The scheduling-block list is included in installed distributions and can be read with `propstark_core.load_observations_csv()`.
 
+## Survey progress
+Generate survey-progress figures with:
+```python
+import propstark_core.survey_statistics
+propstark_core.survey_statistics.make_survey_statistics_figures(semester="26A")
+```
+This creates two PNG files: one for cumulative observed time and one for progress by source.
+
 ## Credits
 
 Developed by Jaime E Pineda ([@jpinedaf](http://github.com/jpinedaf)) and Brian Svoboda ([@autocorr](http://github.com/autocorr)).
