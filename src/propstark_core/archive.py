@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import os
+from collections.abc import Mapping, Sequence
 from importlib.resources import files
 from pathlib import Path
 
@@ -14,7 +15,9 @@ from dotenv import load_dotenv
 from .survey import get_planned_observations
 
 load_dotenv()
-db_project = os.getenv("PROJECT_CODE", "26A-123")
+db_project = os.getenv(
+    "PROJECT_CODE", "26A-517"
+)  # Default project code if not set in .env
 
 
 def setup_service_vla() -> pyvo.dal.TAPService:
@@ -48,14 +51,24 @@ def list_observations(
     return np.unique(table["obs_publisher_did"])
 
 
-def load_observations_csv(file_path: str | Path | None = None) -> pd.DataFrame:
+def load_observations_csv(
+    file_path: str | Path | None = None,
+    source_mapping: Mapping[str, Sequence[str] | str] | None = None,
+    semester_dates: Mapping[str, tuple[str, str]] | None = None,
+) -> pd.DataFrame:
     """Load the observations CSV bundled with the package or a custom path."""
     if file_path is not None:
-        return pd.read_csv(file_path)
+        df = pd.read_csv(file_path)
+    else:
+        resource = files("propstark_core").joinpath("data/sb_list.csv")
+        with resource.open("rb") as csv_file:
+            df = pd.read_csv(csv_file)
 
-    resource = files("propstark_core").joinpath("data/sb_list.csv")
-    with resource.open("rb") as csv_file:
-        return pd.read_csv(csv_file)
+    from .survey import assign_source_and_semester
+
+    return assign_source_and_semester(
+        df, source_mapping=source_mapping, semester_dates=semester_dates
+    )
 
 
 def get_number_observation_per_region(observations: pd.DataFrame) -> pd.DataFrame:

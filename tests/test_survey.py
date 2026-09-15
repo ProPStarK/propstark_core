@@ -6,10 +6,16 @@ import pytest
 
 from propstark_core.survey import (
     REGION_DISTANCES,
+    SEMESTER_DATE_RANGES,
     SEMESTERS,
+    SOURCE_SB_MAPPINGS,
+    assign_source_and_semester,
     compute_cumulative_observed_time,
+    extract_sb_id,
     get_planned_observations,
     get_region_distance,
+    get_semester_from_date,
+    get_source_from_archive_file,
     load_sessions,
     planned_observations_dataframe,
     select_semester_columns,
@@ -64,8 +70,6 @@ def test_survey_progress_dataframe_calculates_observed_counts() -> None:
     assert b18a["observed_26A"] == 0
     assert b18a["observed_27B"] == 1
     assert b18a["observed_total"] == 1
-
-
 
 
 def test_select_semester_columns_calculates_fraction() -> None:
@@ -164,3 +168,85 @@ def test_compute_cumulative_observed_time() -> None:
     assert list(time_df.columns) == ["date", "duration_hours", "cumulative_hours"]
     assert list(time_df["duration_hours"]) == [2.0, 3.5]
     assert list(time_df["cumulative_hours"]) == [2.0, 5.5]
+
+
+def test_extract_sb_id() -> None:
+    archive_file = "26A-517.sb51050327.eb51180015.61288.31844270833"
+    assert extract_sb_id(archive_file) == "sb51050327"
+    assert extract_sb_id("plain_string") == "plain_string"
+
+
+def test_get_source_from_archive_file_default_mapping() -> None:
+    assert (
+        get_source_from_archive_file("26A-517.sb51050327.eb51180015.61288.31844270833")
+        == "IC348-Main"
+    )
+    assert (
+        get_source_from_archive_file("26A-517.sb51076362.eb51144155.61277.36553201389")
+        == "L1455"
+    )
+    assert (
+        get_source_from_archive_file("26A-517.sb51071496.eb51075682.61244.410701597226")
+        == "L1455"
+    )
+    assert get_source_from_archive_file("26A-517.sb99999999.eb51075682") is None
+
+
+def test_get_source_from_archive_file_custom_mapping() -> None:
+    custom_mapping = {
+        "Custom-Region-1": ["sb12345", "51050327"],
+        "Custom-Region-2": ["sb67890"],
+    }
+    assert (
+        get_source_from_archive_file(
+            "26A-517.sb51050327.eb51180015", source_mapping=custom_mapping
+        )
+        == "Custom-Region-1"
+    )
+    assert (
+        get_source_from_archive_file(
+            "26A-517.sb67890.eb51180015", source_mapping=custom_mapping
+        )
+        == "Custom-Region-2"
+    )
+
+
+def test_get_semester_from_date_default_ranges() -> None:
+    assert get_semester_from_date("2026-09-05 07:38:34") == "26A"
+    assert get_semester_from_date("2026-07-23 09:51:25") == "26A"
+    assert get_semester_from_date("2027-09-01 00:00:00") == "27A"
+    assert get_semester_from_date("2025-01-01 00:00:00") is None
+    assert get_semester_from_date("invalid_date") is None
+
+
+def test_get_semester_from_date_custom_ranges() -> None:
+    custom_dates = {
+        "TestSemA": ("2025-01-01 00:00:00", "2025-06-30 23:59:59"),
+        "TestSemB": ("2025-07-01 00:00:00", "2025-12-31 23:59:59"),
+    }
+    assert (
+        get_semester_from_date("2025-03-15 12:00:00", semester_dates=custom_dates)
+        == "TestSemA"
+    )
+    assert (
+        get_semester_from_date("2025-08-20 08:30:00", semester_dates=custom_dates)
+        == "TestSemB"
+    )
+
+
+def test_assign_source_and_semester() -> None:
+    df = pd.DataFrame(
+        {
+            "Archive File": [
+                "26A-517.sb51050327.eb51180015.61288.31844270833",
+                "26A-517.sb51049579.eb51170534.61281.52464027778",
+            ],
+            "Observation Start": [
+                "2026-09-05 07:38:34",
+                "2026-08-29 12:39:31",
+            ],
+        }
+    )
+    result = assign_source_and_semester(df)
+    assert list(result["Source"]) == ["IC348-Main", "L1448"]
+    assert list(result["Semester"]) == ["26A", "26A"]
