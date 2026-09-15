@@ -152,12 +152,12 @@ SOURCE_SB_MAPPINGS: dict[str, list[str]] = {
     "L1495-F": ["sb51062144", "sb51062367"],
 }
 
-# Date ranges defining observing semesters.
-SEMESTER_DATE_RANGES: dict[str, tuple[str, str]] = {
-    "26A": ("2026-02-20 00:00:00", "2026-10-19 23:59:59"),
-    "26B": ("2026-10-20 00:00:00", "2027-02-15 23:59:59"),
-    "27A": ("2027-03-16 00:00:00", "2027-10-25 23:59:59"),
-    "27B": ("2027-10-26 00:00:00", "2028-02-21 23:59:59"),
+# Start dates defining observing semesters.
+SEMESTER_START_DATES: dict[str, str] = {
+    "26A": "2026-02-20 00:00:00",
+    "26B": "2026-10-20 00:00:00",
+    "27A": "2027-03-16 00:00:00",
+    "27B": "2027-10-26 00:00:00",
 }
 
 
@@ -194,22 +194,23 @@ def get_source_from_archive_file(
 
 def get_semester_from_date(
     date: Any,
-    semester_dates: Mapping[str, tuple[str, str]] | None = None,
+    semester_dates: Mapping[str, str] | None = None,
 ) -> str | None:
     """Determine the semester from an observation start date."""
     if pd.isna(date):
         return None
-    dates = SEMESTER_DATE_RANGES if semester_dates is None else semester_dates
+    dates = SEMESTER_START_DATES if semester_dates is None else semester_dates
 
     try:
         dt = pd.Timestamp(date)
     except Exception:
         return None
 
-    for semester, (start, end) in dates.items():
-        start_dt = pd.Timestamp(start)
-        end_dt = pd.Timestamp(end)
-        if start_dt <= dt <= end_dt:
+    starts = sorted(
+        (pd.Timestamp(start), semester) for semester, start in dates.items()
+    )
+    for start, semester in reversed(starts):
+        if start <= dt:
             return semester
 
     return None
@@ -218,7 +219,7 @@ def get_semester_from_date(
 def assign_source_and_semester(
     observations: pd.DataFrame,
     source_mapping: Mapping[str, Sequence[str] | str] | None = None,
-    semester_dates: Mapping[str, tuple[str, str]] | None = None,
+    semester_dates: Mapping[str, str] | None = None,
 ) -> pd.DataFrame:
     """Populate 'Source' and 'Semester' columns in observations DataFrame if missing or containing nulls."""
     df = observations.copy()
@@ -261,7 +262,7 @@ def assign_source_and_semester(
 def load_sessions(
     sessions: pd.DataFrame | str | Path | None = None,
     source_mapping: Mapping[str, Sequence[str] | str] | None = None,
-    semester_dates: Mapping[str, tuple[str, str]] | None = None,
+    semester_dates: Mapping[str, str] | None = None,
 ) -> pd.DataFrame:
     """
     Load archive observations from a DataFrame or CSV file.

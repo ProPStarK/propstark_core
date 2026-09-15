@@ -6,7 +6,7 @@ from .archive import list_observations, load_observations_csv, query_proposal_id
 from .pointings import plot_pointings, pst_to_ds9_fk5_regions
 from .survey import (
     REGION_DISTANCES,
-    SEMESTER_DATE_RANGES,
+    SEMESTER_START_DATES,
     SEMESTERS,
     SOURCE_SB_MAPPINGS,
     assign_source_and_semester,
@@ -26,7 +26,7 @@ from .survey import (
 __all__ = [
     "REGION_DISTANCES",
     "SEMESTERS",
-    "SEMESTER_DATE_RANGES",
+    "SEMESTER_START_DATES",
     "SOURCE_SB_MAPPINGS",
     "assign_source_and_semester",
     "compute_cumulative_observed_time",

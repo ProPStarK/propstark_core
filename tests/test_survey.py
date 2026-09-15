@@ -6,7 +6,7 @@ import pytest
 
 from propstark_core.survey import (
     REGION_DISTANCES,
-    SEMESTER_DATE_RANGES,
+    SEMESTER_START_DATES,
     SEMESTERS,
     SOURCE_SB_MAPPINGS,
     assign_source_and_semester,
@@ -211,18 +211,19 @@ def test_get_source_from_archive_file_custom_mapping() -> None:
     )
 
 
-def test_get_semester_from_date_default_ranges() -> None:
+def test_get_semester_from_date_default_start_dates() -> None:
     assert get_semester_from_date("2026-09-05 07:38:34") == "26A"
     assert get_semester_from_date("2026-07-23 09:51:25") == "26A"
+    assert get_semester_from_date("2027-03-01 00:00:00") == "26B"
     assert get_semester_from_date("2027-09-01 00:00:00") == "27A"
     assert get_semester_from_date("2025-01-01 00:00:00") is None
     assert get_semester_from_date("invalid_date") is None
 
 
-def test_get_semester_from_date_custom_ranges() -> None:
+def test_get_semester_from_date_custom_start_dates() -> None:
     custom_dates = {
-        "TestSemA": ("2025-01-01 00:00:00", "2025-06-30 23:59:59"),
-        "TestSemB": ("2025-07-01 00:00:00", "2025-12-31 23:59:59"),
+        "TestSemA": "2025-01-01 00:00:00",
+        "TestSemB": "2025-07-01 00:00:00",
     }
     assert (
         get_semester_from_date("2025-03-15 12:00:00", semester_dates=custom_dates)
