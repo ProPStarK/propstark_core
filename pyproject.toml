@@ -57,6 +57,7 @@ addopts = ["--ignore=src/propstark_core/_version.py"]
 [tool.coverage.run]
 branch = true
 source = ["propstark_core"]
+omit = ["tests/*"]
 
 [tool.coverage.report]
 exclude_lines = [
